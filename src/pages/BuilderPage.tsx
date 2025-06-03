@@ -1119,7 +1119,7 @@ const BuilderPage: React.FC = () => {
                           )}
                           
                           <div className="mt-2 flex justify-between items-center">
-                            <span className="text-sm font-bold text-gray-900">${component.price.toFixed(2)}</span>
+                            <span className="text-sm font-bold text-gray-900">{component.price.toFixed(2)}Сом</span>
                             <span className="text-xs text-blue-600">Select</span>
                           </div>
                         </div>

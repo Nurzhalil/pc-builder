@@ -5,38 +5,33 @@ import { Search, Filter, ChevronDown } from 'lucide-react';
 import axios from 'axios';
 import { API_URL } from '../config';
 
-// Component type interface
 interface ComponentType {
   id: string;
   name: string;
   icon: React.ReactNode;
 }
 
-// Component interface
 interface Component {
   id: number;
   name: string;
   price: number;
   image_url?: string;
-  [key: string]: any; // For additional properties based on component type
+  [key: string]: any; 
 }
 
 const ComponentCatalogPage: React.FC = () => {
-  // State for component types and selected type
   const [componentTypes, setComponentTypes] = useState<ComponentType[]>([]);
   const [selectedType, setSelectedType] = useState<string>('cpus');
   
-  // State for components and loading state
   const [components, setComponents] = useState<Component[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  
-  // State for search and filters
+ 
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({ min: 0, max: 10000 });
   const [sortOption, setSortOption] = useState<string>('name-asc');
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
-  // Initialize component types
+
   useEffect(() => {
     const types = [
       { id: 'cpus', name: 'Processors (CPUs)', icon: '🔄' },
@@ -217,7 +212,7 @@ const ComponentCatalogPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Min Price ($)
+                  Min Price (Сом)
                 </label>
                 <input
                   type="number"
@@ -230,7 +225,7 @@ const ComponentCatalogPage: React.FC = () => {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Max Price ($)
+                  Max Price (Сом)
                 </label>
                 <input
                   type="number"
@@ -294,7 +289,7 @@ const ComponentCatalogPage: React.FC = () => {
                         </h3>
                         
                         <div className="mt-2 flex justify-between items-center">
-                          <span className="text-gray-900 font-bold">${Number(component.price).toFixed(2)}</span>
+                          <span className="text-gray-900 font-bold">{Number(component.price).toFixed(2)} Сом</span>
                           <span className="text-sm text-blue-600 font-medium">View Details</span>
                         </div>
                         
